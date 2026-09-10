@@ -255,11 +255,11 @@
             transform: translateY(-2px);
         }
 
-        /* --- PROJECTS SECTION --- */
+        /* --- PROJECTS SECTION (STRICT 2x2 GRID) --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
         }
 
         .project-card {
@@ -271,6 +271,7 @@
             flex-direction: column;
             justify-content: space-between;
             transition: var(--transition);
+            height: 100%;
         }
 
         .project-card:hover {
@@ -390,6 +391,10 @@
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 1.75rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
             .nav-links {
@@ -541,7 +546,7 @@
                     </div>
                 </div>
 
-                <!-- Project 4 (NDA-Compliant Capstone Entry) -->
+                <!-- Project 4 -->
                 <div class="project-card">
                     <div>
                         <h3 class="project-title">Dialectal Speech Recognition (STT) Research</h3>
