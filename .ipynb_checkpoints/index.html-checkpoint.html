@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatema Alsabah | Data Scientist & Mathematician</title>
+    <style>
+        /* --- CSS VARIABLES & DARK NAVY/BLUE THEME --- */
+        :root {
+            --bg-main: #0b132b;         /* Deep Rich Navy */
+            --bg-card: #1c2541;         /* Lighter Navy/Slate Blue */
+            --bg-card-hover: #232f52;   /* Interactive Navy Accent */
+            --border: #2a385b;          /* Subtle Slate Border */
+            --text-primary: #f8fafc;    /* Crisp Soft White */
+            --text-secondary: #94a3b8;  /* Muted Silver Blue */
+            --accent-blue: #38bdf8;     /* Bright Electric Blue */
+            --accent-purple: #c084fc;   /* Bright Lavender/Purple */
+            --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+            --glow: rgba(56, 189, 248, 0.12);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2.section-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        h2.section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(11, 19, 43, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 65px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            padding: 3.5rem 0 4rem 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, var(--glow) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-name {
+            font-size: 3.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .hero-role {
+            font-size: 1.4rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .hero-statement {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            background: var(--gradient-accent);
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192, 132, 252, 0.35);
+        }
+
+        /* --- ABOUT & CERTIFICATIONS --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 1.025rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .cert-item::before {
+            content: '✓';
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .project-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            border-bottom: none;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .contact-box p {
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            #hero {
+                padding: 2.5rem 0 3rem 0;
+            }
+
+            .hero-name {
+                font-size: 2.25rem;
+            }
+
+            .hero-role {
+                font-size: 1.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY NAVIGATION BAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">FA.</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">Data Science & Mathematics</span>
+            <h1 class="hero-name">Fatema Alsabah</h1>
+            <div class="hero-role">Data Scientist | Mathematician</div>
+            <p class="hero-statement">
+                An analytical problem-solver specializing in mathematics, equipped with a deep understanding of statistical modeling, data logic, and an aptitude for breaking down complex challenges and finding numerical patterns. Combines strong quantitative foundations with leadership and communication capabilities to deliver clear, evidence-based solutions.
+            </p>
+            <a href="#projects" class="cta-btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- ABOUT ME & CERTIFICATIONS -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Currently pursuing a Bachelor of Science degree in Mathematics while completing intensive specialized training in data science, I bridge the gap between pure quantitative theory and practical data-driven decision-making.
+                    </p>
+                    <p>
+                        My background in mathematics provides a strong foundation for tackling complex datasets, developing predictive models, and building reliable analytical solutions.
+                    </p>
+                    <p>
+                        Driven by a passion for uncovering hidden trends and communicating clear insights, I focus on building impactful machine learning and analytics projects using Python, SQL, and statistical modeling tools.
+                    </p>
+                </div>
+                <div class="cert-card">
+                    <h3>Badges & Certifications</h3>
+                    <ul class="cert-list">
+                        <li class="cert-item">Microsoft Office Specialist: PowerPoint Associate</li>
+                        <li class="cert-item">CMI Level 3 Certificate in Principles of Management and Leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical & Professional Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Applied Mathematics</span>
+                <span class="skill-tag">Statistical Modeling</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Data Cleaning</span>
+                <span class="skill-tag">SQLite</span>
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">Scikit-Learn</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Streamlit</span>
+                <span class="skill-tag">Data Visualization</span>
+                <span class="skill-tag">Communication</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Leadership</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div>
+                        <h3 class="project-title">Recipe Manager</h3>
+                        <p class="project-details">
+                            Designed and developed an interactive, object-oriented recipe management application featuring automated file handling and structured CSV storage for seamless data persistence.
+                        </p>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">OOP</span>
+                        <span class="tech-tag">CSV Data Handling</span>
+                        <span class="tech-tag">File I/O</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div>
+                        <h3 class="project-title">Stack Overflow Developer Survey Analysis</h3>
+                        <p class="project-details">
+                            Performed exploratory data analysis on two years of global developer survey data to evaluate technology adoption trends, identify high-demand skills, and optimize bootcamp curriculum strategies.
+                        </p>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib / Seaborn</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div>
+                        <h3 class="project-title">Bahraini Residential Rental Price Predictor</h3>
+                        <p class="project-details">
+                            Engineered and evaluated regression models to predict monthly residential rental prices in Bahrain based on local property features, spatial metrics, and location attributes.
+                        </p>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Regression Analysis</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h3>Get In Touch</h3>
+                <p>Feel free to reach out for research collaboration, analytical projects, or professional opportunities.</p>
+                <div class="contact-links">
+                    <a href="mailto:fatimasabah2825@gmail.com" class="contact-btn">Email Me</a>
+                    <a href="https://www.linkedin.com/in/fatema-alsabah/" target="_blank" rel="noopener noreferrer" class="contact-btn">LinkedIn</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="contact-btn" id="github-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Fatema Alsabah. Hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- VANILLA JAVASCRIPT FOR INTERACTION -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add subtle shadow state to sticky header on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.4)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
